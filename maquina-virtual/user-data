@@ -1,0 +1,19 @@
+#cloud-config
+hostname: vm-bi-feiraja
+fqdn: vm-bi-feiraja.local
+timezone: America/Sao_Paulo
+users:
+  - name: feiraja
+    gecos: Administrador FeiraJa
+    groups: [sudo]
+    shell: /bin/bash
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    lock_passwd: false
+    ssh_authorized_keys:
+      - ssh-ed25519 <SUA_CHAVE_PUBLICA>
+chpasswd:
+  expire: false
+  users:
+    - {name: feiraja, password: <DEFINA_UMA_SENHA>, type: text}
+ssh_pwauth: false
+package_update: false

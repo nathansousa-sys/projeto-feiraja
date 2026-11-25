@@ -1,0 +1,14 @@
+[Unit]
+Description=Metabase - BI da FeiraJa
+After=network.target postgresql.service
+
+[Service]
+User=metabase
+WorkingDirectory=/opt/metabase
+Environment=MB_JETTY_PORT=3000
+Environment=MB_DB_FILE=/opt/metabase/metabase.db
+ExecStart=/usr/bin/java -Xmx1536m -jar /opt/metabase/metabase.jar
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
